@@ -10,6 +10,12 @@ let hasBonusLife = true;
 
 adjustHealthBars(chosenMaxLife);
 
+function reset () {
+    currentMonsterHealth = chosenMaxLife;
+    currentPlayerHealth = chosenMaxLife;
+    resetGame(chosenMaxLife);
+}
+
 function endRound() {
     const initialPlayerHealth = currentPlayerHealth;
     const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
@@ -23,12 +29,17 @@ function endRound() {
         alert('You have one more life, thankfully');
     }
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
-        alert('You won');   
+        alert('You won');  
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
         alert('You lost Nigga!')
-    } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0 ) (
-        alert('This match is drawn')
-    )
+    } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0 ) {
+        alert('This match is drawn');
+    }
+    
+    if (currentMonsterHealth <= 0 || currentPlayerHealth <=0) {
+        reset();
+    }
+
 }
 
 
