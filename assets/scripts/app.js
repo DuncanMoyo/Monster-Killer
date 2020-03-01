@@ -98,27 +98,27 @@ function endRound() {
   if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
     alert("You won");
     writeToLog(
-        LOG_EVENT_GAME_OVER,
-        'PLAYER WON',
-        currentMonsterHealth,
-        currentPlayerHealth
-      );
+      LOG_EVENT_GAME_OVER,
+      "PLAYER WON",
+      currentMonsterHealth,
+      currentPlayerHealth
+    );
   } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
     alert("You lost!");
     writeToLog(
-        LOG_EVENT_GAME_OVER,
-        'THE MONSTER WON',
-        currentMonsterHealth,
-        currentPlayerHealth
-      );
+      LOG_EVENT_GAME_OVER,
+      "THE MONSTER WON",
+      currentMonsterHealth,
+      currentPlayerHealth
+    );
   } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
     alert("This match is drawn");
     writeToLog(
-        LOG_EVENT_GAME_OVER,
-        'IT\S A DRAW',
-        currentMonsterHealth,
-        currentPlayerHealth
-      );
+      LOG_EVENT_GAME_OVER,
+      "ITS A DRAW",
+      currentMonsterHealth,
+      currentPlayerHealth
+    );
   }
 
   if (currentMonsterHealth <= 0 || currentPlayerHealth <= 0) {
@@ -127,24 +127,22 @@ function endRound() {
 }
 
 function attackMonster(mode) {
-  let maxDamage;
-  let logEvent;
-  if (mode === MODE_ATTACK) {
-    maxDamage = ATTACK_VALUE;
-    logEvent = LOG_EVENT_PLAYER_ATTACK;
-  } else {
-    maxDamage = STRONG_ATTACK_VALUE;
-    logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
-  }
+  const maxDamage = mode === MODE_ATTACK ? ATTACK_VALUE : STRONG_ATTACK_VALUE;
+  const logEvent =
+    mode === MODE_ATTACK
+      ? LOG_EVENT_PLAYER_ATTACK
+      : LOG_EVENT_PLAYER_STRONG_ATTACK;
+  //   if (mode === MODE_ATTACK) {
+  //     maxDamage = ATTACK_VALUE;
+  //     logEvent = LOG_EVENT_PLAYER_ATTACK;
+  //   } else {
+  //     maxDamage = STRONG_ATTACK_VALUE;
+  //     logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
+  //   }
 
   const damage = dealMonsterDamage(maxDamage);
   currentMonsterHealth -= damage;
-  writeToLog(
-    logEvent,
-    damage,
-    currentMonsterHealth,
-    currentPlayerHealth
-  );
+  writeToLog(logEvent, damage, currentMonsterHealth, currentPlayerHealth);
   endRound();
 }
 
