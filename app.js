@@ -1,14 +1,15 @@
-let name = 'Duncan';
+const startGameBtn = document.getElementById('start-game-btn');
 
-if (name === 'Duncan') {
-    let hobbies = ['Sports', 'Cooking'];
-    console.log(hobbies);
+function startGame() {
+  console.log('Game is starting...')
 }
 
-function greet() {
-    let age = 28;
-    let name = 'Duncan_Moyo'
-    console.log(name, age, hobbies);
-}
+// const person = {
+//   greet: function greet() {
+//     console.log('Hello there!'); 
+//   }
+// };
 
-console.log(name, hobbies);
+// person.greet();                        
+
+startGameBtn.addEventListener('click', startGame);
