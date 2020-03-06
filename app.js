@@ -10,6 +10,8 @@ function startGame() {
 //   }
 // };
 
-// person.greet();                        
+// person.greet();    
+
+console.log(typeof startGame);
 
 startGameBtn.addEventListener('click', startGame);
