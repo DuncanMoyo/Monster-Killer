@@ -1,20 +1,32 @@
-const startGameBtn = document.getElementById('start-game-btn');
+const startGameBtn = document.getElementById("start-game-btn");
 
-// const start = function() {
-//   console.log('Game is starting...'); 
-// };
+const ROCK = 'ROCK';
+const PAPER = 'PAPER';
+const SCISSORS = 'SCISSORS';
+const DEFAULT_USER_CHOICE = ROCK;
 
-// const person = {
-//   name: 'Duncan',
-//   greet: function greet() {
-//     console.log('Hello there!'); 
-//   }
-// };
+let gameIsRunning = false;
 
-// person.greet();    
 
-console.log(typeof startGame); 
+const getPlayerChoice = function() {
+  const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, "").toUpperCase();
+  if (
+    selection !== ROCK &&
+    selection !== PAPER &&
+    selection !== SCISSORS
+  ) {
+    alert(`Invalid choice! We chose ${DEFAULT_USER_CHOICE} for you`);
+    return DEFAULT_USER_CHOICE;
+  }
+  return selection;
+};
 
-startGameBtn.addEventListener('click', function() {
-  console.log('Game is starting...'); 
+startGameBtn.addEventListener("click", function() {
+  if (gameIsRunning) {
+    return;
+  }
+  gameIsRunning = true;
+  console.log("Game is starting...");
+  const playerSelection = getPlayerChoice();
+  console.log(playerSelection);
 });
