@@ -33,7 +33,7 @@ const getComputerChoice = () => {
   }
 };
 
-const getWinner = (cChoice,  pChoice = DEFAULT_USER_CHOICE) =>
+const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
   cChoice === pChoice
     ? RESULT_DRAW
     : (cChoice === ROCK && pChoice === PAPER) ||
@@ -80,9 +80,28 @@ startGameBtn.addEventListener("click", () => {
   gameIsRunning = false;
 });
 
+// not related to the game
 
+const sumUp = (...numbers) => {
+  let sum = 0;
+  for (const num of numbers) {
+    sum += num;
+  }
+  return sum;
+};
+console.log(sumUp(1, 2, 5, -8, 20));
+console.log(sumUp(1, 2, 5, -8, 20, 4, 6));
 
+const subtractDown = function() {
+  let sub = 0;
+  for (const num of arguments) {  // dont use that
+    sub -= num;
+  }
+  return sub;
+};
 
+console.log(subtractDown(1, 2, 5, -8, 20));
+console.log(subtractDown(1, 2, 5, -8, 20, 4, 6));
 
 
 
